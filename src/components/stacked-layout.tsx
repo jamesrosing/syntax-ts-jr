@@ -3,6 +3,8 @@
 import * as Headless from '@headlessui/react'
 import React, { useState } from 'react'
 import { NavbarItem } from './navbar'
+import { Sidebar } from './sidebar'
+import { navigation } from '@/lib/navigation'  // Import the navigation structure
 
 function OpenMenuIcon() {
   return (
@@ -46,9 +48,9 @@ function MobileSidebar({ open, close, children }: React.PropsWithChildren<{ open
 
 export function StackedLayout({
   navbar,
-  sidebar,
+  sidebar = <Sidebar />,  // Use Sidebar by default
   children,
-}: React.PropsWithChildren<{ navbar: React.ReactNode; sidebar: React.ReactNode }>) {
+}: React.PropsWithChildren<{ navbar: React.ReactNode; sidebar?: React.ReactNode }>) {
   let [showSidebar, setShowSidebar] = useState(false)
 
   return (
